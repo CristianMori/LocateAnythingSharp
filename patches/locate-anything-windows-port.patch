@@ -1,0 +1,49 @@
+﻿diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 92c50b5..3ffa1af 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -57,6 +57,9 @@ set(LA_SOURCES
+ # Sources are created across M2 tasks; until they all exist, stub .cpp files keep the lib building.
+ if(LA_SHARED)
+     add_library(locate_anything SHARED ${LA_SOURCES})
++    if(WIN32)
++        set_target_properties(locate_anything PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
++    endif()
+ else()
+     add_library(locate_anything STATIC ${LA_SOURCES})
+ endif()
+diff --git a/include/la_capi.h b/include/la_capi.h
+index 047dd87..aea0a12 100644
+--- a/include/la_capi.h
++++ b/include/la_capi.h
+@@ -18,6 +18,7 @@ int      la_capi_get_detection_box(la_ctx* ctx, int i, float out_xyxy[4]);    /*
+ int      la_capi_get_detection_label(la_ctx* ctx, int i, char* buf, int buf_size); /* returns required size incl NUL; two-call sizing */
+ void        la_capi_free_string(char* s);
+ const char* la_capi_last_error(la_ctx* ctx);                   /* owned by ctx, "" if none */
++const char* la_capi_device_name(la_ctx* ctx);                  /* "cpu" or e.g. "CUDA0"; owned by ctx */
+ #ifdef __cplusplus
+ }
+ #endif
+diff --git a/src/engine.hpp b/src/engine.hpp
+index 270b78e..bc8ccf8 100644
+--- a/src/engine.hpp
++++ b/src/engine.hpp
+@@ -18,6 +18,8 @@ public:
+                                    const std::string& query,
+                                    Mode mode = Mode::Hybrid, int max_new = 256);
+     Tokenizer& tokenizer() { return tok_; }
++    // Name of the compute device the backend selected ("cpu" or e.g. "CUDA0").
++    const std::string& device_name() const { return be_.device_name(); }
+ private:
+     Engine() = default;
+     std::vector<Box> locate_image(const Image& img, const std::string& query,
+diff --git a/src/la_capi.cpp b/src/la_capi.cpp
+index 1f2004e..1594d1e 100644
+--- a/src/la_capi.cpp
++++ b/src/la_capi.cpp
+@@ -47,4 +47,5 @@ int la_capi_get_detection_label(la_ctx* c, int i, char* buf, int bufsz){
+     return need; }
+ void la_capi_free_string(char* s){ std::free(s); }
+ const char* la_capi_last_error(la_ctx* c){ return c? c->last_error.c_str() : ""; }
++const char* la_capi_device_name(la_ctx* c){ return c&&c->engine? c->engine->device_name().c_str() : "cpu"; }
+ }

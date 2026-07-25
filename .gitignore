@@ -1,0 +1,20 @@
+# Model weights (multi-GB, download separately - see README)
+models/
+*.gguf
+
+# Third-party engine source: cloned separately and patched via patches/ (see README)
+locate-anything.cpp/
+
+# .NET build output and IDE state
+dotnet/**/bin/
+dotnet/**/obj/
+.vs/
+dotnet/.vs/
+
+# Native build output
+build/
+build-*/
+
+# Local test artifacts
+out_*.png
+boxes*.json

@@ -1,0 +1,29 @@
+<!--
+  Copyright 2026 Cristian Mori
+  Licensed under the Apache License, Version 2.0. See the LICENSE file.
+
+  Windows Forms demo: open a local image file, type category names, run
+  detection, and view the labeled boxes drawn over the image.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Mori.LocateAnything.Demo.Image</RootNamespace>
+    <Authors>Cristian Mori</Authors>
+    <Copyright>Copyright © 2026 Cristian Mori</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mori.LocateAnythingSharp\Mori.LocateAnythingSharp.csproj" />
+  </ItemGroup>
+
+  <!-- Native engine + CUDA runtime DLLs are copied next to the exe by
+       scripts/package-native.ps1 (run once after building the C++ side). -->
+
+</Project>

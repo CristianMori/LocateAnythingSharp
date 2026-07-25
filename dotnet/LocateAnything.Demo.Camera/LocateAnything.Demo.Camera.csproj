@@ -1,0 +1,35 @@
+<!--
+  Copyright 2026 Cristian Mori
+  Licensed under the Apache License, Version 2.0. See the LICENSE file.
+
+  Windows Forms demo: select a camera, watch the live stream, and continuously
+  run open-vocabulary detection on the latest frame, overlaying labeled boxes.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Mori.LocateAnything.Demo.Camera</RootNamespace>
+    <Authors>Cristian Mori</Authors>
+    <Copyright>Copyright © 2026 Cristian Mori</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mori.LocateAnythingSharp\Mori.LocateAnythingSharp.csproj" />
+    <!-- Camera capture + frame encoding. -->
+    <PackageReference Include="OpenCvSharp4" Version="4.11.0.20250507" />
+    <PackageReference Include="OpenCvSharp4.Extensions" Version="4.11.0.20250507" />
+    <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.11.0.20250507" />
+    <!-- WMI query for human-readable camera names. -->
+    <PackageReference Include="System.Management" Version="9.0.0" />
+  </ItemGroup>
+
+  <!-- Native engine + CUDA runtime DLLs are copied next to the exe by
+       scripts/package-native.ps1 (run once after building the C++ side). -->
+
+</Project>

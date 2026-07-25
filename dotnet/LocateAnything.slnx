@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="LocateAnything.Demo.Camera/LocateAnything.Demo.Camera.csproj" />
+  <Project Path="LocateAnything.Demo.Image/LocateAnything.Demo.Image.csproj" />
+  <Project Path="LocateAnything.Demo/LocateAnything.Demo.csproj" />
+  <Project Path="Mori.LocateAnythingSharp/Mori.LocateAnythingSharp.csproj" />
+</Solution>

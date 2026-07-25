@@ -1,0 +1,24 @@
+<!--
+  Copyright 2026 Cristian Mori
+  Licensed under the Apache License, Version 2.0. See the LICENSE file.
+
+  Mori.LocateAnythingSharp: managed bindings for the native open-vocabulary
+  detection engine (locate_anything.dll). The C# namespace is
+  Mori.LocateAnything.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>Mori.LocateAnything</RootNamespace>
+    <PackageId>Mori.LocateAnythingSharp</PackageId>
+    <Authors>Cristian Mori</Authors>
+    <Copyright>Copyright © 2026 Cristian Mori</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Description>.NET bindings for NVIDIA's LocateAnything-3B — text-prompted, open-vocabulary object detection that runs fully local, from single images to live camera streams.</Description>
+  </PropertyGroup>
+
+</Project>
