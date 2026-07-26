@@ -24,9 +24,11 @@
     <RepositoryUrl>https://github.com/CristianMori/LocateAnythingSharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>object-detection;native;runtime;cpu;windows</PackageTags>
+    <PackageReadmeFile>PACKAGE.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="PACKAGE.md" Pack="true" PackagePath="\" />
     <None Include="..\..\locate-anything.cpp\build-cpu\locate_anything.dll"
           Pack="true" PackagePath="runtimes/win-x64/native/" />
   </ItemGroup>
