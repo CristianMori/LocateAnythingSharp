@@ -1,0 +1,34 @@
+<!--
+  Copyright 2026 Cristian Mori
+  Licensed under the Apache License, Version 2.0. See the LICENSE file.
+
+  Native backend package (CPU-only): ships locate_anything.dll built without
+  CUDA under runtimes/win-x64/native so the .NET SDK copies it next to any
+  consuming application. Contains no managed code.
+  The DLL is produced by scripts/pack.ps1 into locate-anything.cpp/build-cpu.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <!-- NU5128: intentional - this package has native assets only, no lib/. -->
+    <NoWarn>NU5128</NoWarn>
+    <PackageId>Mori.LocateAnythingSharp.Runtime.Cpu</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Cristian Mori</Authors>
+    <Copyright>Copyright © 2026 Cristian Mori</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Description>CPU-only native engine for Mori.LocateAnythingSharp (Windows x64). Install alongside Mori.LocateAnythingSharp; no GPU required.</Description>
+    <PackageProjectUrl>https://github.com/CristianMori/LocateAnythingSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CristianMori/LocateAnythingSharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>object-detection;native;runtime;cpu;windows</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\locate-anything.cpp\build-cpu\locate_anything.dll"
+          Pack="true" PackagePath="runtimes/win-x64/native/" />
+  </ItemGroup>
+
+</Project>

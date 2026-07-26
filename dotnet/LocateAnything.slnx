@@ -2,5 +2,7 @@
   <Project Path="LocateAnything.Demo.Camera/LocateAnything.Demo.Camera.csproj" />
   <Project Path="LocateAnything.Demo.Image/LocateAnything.Demo.Image.csproj" />
   <Project Path="LocateAnything.Demo/LocateAnything.Demo.csproj" />
+  <Project Path="Mori.LocateAnythingSharp.Runtime.Cpu/Mori.LocateAnythingSharp.Runtime.Cpu.csproj" />
+  <Project Path="Mori.LocateAnythingSharp.Runtime.Cuda/Mori.LocateAnythingSharp.Runtime.Cuda.csproj" />
   <Project Path="Mori.LocateAnythingSharp/Mori.LocateAnythingSharp.csproj" />
 </Solution>

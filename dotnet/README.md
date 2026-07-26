@@ -18,6 +18,8 @@ NuGet package id is `Mori.LocateAnythingSharp`; the C# namespace is
 | Project | Purpose |
 | --- | --- |
 | `Mori.LocateAnythingSharp` | Class library: P/Invoke bindings (`NativeMethods`), the safe `LocateEngine` wrapper, `GpuSupport` first-run GPU/driver checks, and `ModelLocator`. |
+| `Mori.LocateAnythingSharp.Runtime.Cpu` | NuGet backend package: CPU-only native engine under `runtimes/win-x64/native`. No code. |
+| `Mori.LocateAnythingSharp.Runtime.Cuda` | NuGet backend package: CUDA native engine (RTX 20-50 series, CPU fallback). No code. |
 | `LocateAnything.Demo` | Console app: loads a model once, detects in a loop, reports per-image latency. |
 | `LocateAnything.Demo.Image` | WinForms app: open a local image, type categories, see labeled boxes drawn over it. |
 | `LocateAnything.Demo.Camera` | WinForms app: pick a camera, watch the live stream, and continuously detect on the newest frame with a box overlay (video stays smooth; boxes update ~1/s on GPU). |
@@ -44,6 +46,21 @@ Console.WriteLine($"device: {engine.DeviceName}");           // "CUDA0" or "cpu"
 var boxes = engine.Locate("street.jpg", LocateEngine.PromptFor("person", "car"));
 foreach (var d in boxes) Console.WriteLine(d);               // person [x1,y1,x2,y2]
 ```
+
+## NuGet packaging
+
+`scripts\pack.ps1` builds both native engine variants (CPU-only and CUDA) and
+packs three packages into `artifacts\nuget`:
+
+- `Mori.LocateAnythingSharp` - managed bindings (consumers add one backend).
+- `Mori.LocateAnythingSharp.Runtime.Cpu` - CPU-only engine (~0.7 MB).
+- `Mori.LocateAnythingSharp.Runtime.Cuda` - multi-arch CUDA engine (~110 MB).
+  Consumers additionally need the CUDA runtime DLLs (cudart64/cublas64/
+  cublasLt64) next to their app or an installed CUDA Toolkit.
+
+Model weights are never packaged (size and NVIDIA license); consumers download
+them separately as described in the package README. Publishing is manual:
+`dotnet nuget push artifacts\nuget\*.nupkg --api-key <key> --source https://api.nuget.org/v3/index.json`.
 
 ## GPU behavior
 

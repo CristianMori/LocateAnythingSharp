@@ -1,0 +1,39 @@
+<!--
+  Copyright 2026 Cristian Mori
+  Licensed under the Apache License, Version 2.0. See the LICENSE file.
+
+  Native backend package (CUDA): ships locate_anything.dll with embedded GPU
+  kernels for NVIDIA RTX 20/30/40/50 series (plus PTX for newer GPUs) under
+  runtimes/win-x64/native. Falls back to CPU at runtime when no usable GPU is
+  present. Contains no managed code.
+
+  Consumers must additionally provide the NVIDIA CUDA runtime DLLs (cudart64,
+  cublas64, cublasLt64) next to their application or via an installed CUDA
+  Toolkit - they are far too large for a NuGet package.
+  The DLL is produced by scripts/pack.ps1 into locate-anything.cpp/build-cuda.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <!-- NU5128: intentional - this package has native assets only, no lib/. -->
+    <NoWarn>NU5128</NoWarn>
+    <PackageId>Mori.LocateAnythingSharp.Runtime.Cuda</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Cristian Mori</Authors>
+    <Copyright>Copyright © 2026 Cristian Mori</Copyright>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <Description>CUDA native engine for Mori.LocateAnythingSharp (Windows x64, NVIDIA RTX 20 series and newer, automatic CPU fallback). Requires the NVIDIA CUDA runtime DLLs next to the application or an installed CUDA Toolkit.</Description>
+    <PackageProjectUrl>https://github.com/CristianMori/LocateAnythingSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CristianMori/LocateAnythingSharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>object-detection;native;runtime;cuda;gpu;windows</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\locate-anything.cpp\build-cuda\locate_anything.dll"
+          Pack="true" PackagePath="runtimes/win-x64/native/" />
+  </ItemGroup>
+
+</Project>

@@ -15,10 +15,20 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <RootNamespace>Mori.LocateAnything</RootNamespace>
     <PackageId>Mori.LocateAnythingSharp</PackageId>
+    <Version>0.1.0</Version>
     <Authors>Cristian Mori</Authors>
     <Copyright>Copyright © 2026 Cristian Mori</Copyright>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <Description>.NET bindings for NVIDIA's LocateAnything-3B — text-prompted, open-vocabulary object detection that runs fully local, from single images to live camera streams.</Description>
+    <Description>.NET bindings for NVIDIA's LocateAnything-3B — text-prompted, open-vocabulary object detection that runs fully local, from single images to live camera streams. Requires a native backend package: Mori.LocateAnythingSharp.Runtime.Cpu or Mori.LocateAnythingSharp.Runtime.Cuda.</Description>
+    <PackageProjectUrl>https://github.com/CristianMori/LocateAnythingSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CristianMori/LocateAnythingSharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>object-detection;computer-vision;open-vocabulary;grounding;cuda;local;windows</PackageTags>
+    <PackageReadmeFile>PACKAGE.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="PACKAGE.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>

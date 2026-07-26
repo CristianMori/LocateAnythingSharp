@@ -94,7 +94,7 @@ in the background (as the camera demo does) rather than per-frame.
 | Path | Contents |
 | --- | --- |
 | `dotnet/` | C# solution: `Mori.LocateAnythingSharp` bindings + console, image, and live-camera demos. |
-| `scripts/` | `setup.ps1` (full environment setup), `package-native.ps1` (native DLL packaging), `capture-window.ps1` (README screenshots). |
+| `scripts/` | `setup.ps1` (full environment setup), `pack.ps1` (NuGet packages), `package-native.ps1` (native DLL packaging), `capture-window.ps1` (README screenshots). |
 | `patches/` | Windows-port patch for the third-party C++ engine (symbol exports, device-name API). |
 | `setup.bat` | One-shot setup - runs `scripts/setup.ps1`. |
 | `docs/` | Screenshots and example output. |
