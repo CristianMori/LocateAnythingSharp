@@ -1,6 +1,6 @@
 @echo off
 rem Copyright 2026 Cristian Mori
-rem Licensed under the Apache License, Version 2.0. See dotnet\LICENSE.
+rem Licensed under the Apache License, Version 2.0. See LICENSE.
 rem
 rem One-shot setup for LocateAnythingSharp: clones and builds the native
 rem engine, downloads the model weights, builds the .NET solution, and

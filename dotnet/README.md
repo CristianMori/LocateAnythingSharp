@@ -4,7 +4,7 @@
 object detection that runs fully local, from single images to live camera
 streams.
 
-Copyright © 2026 Cristian Mori. Licensed under the [Apache License 2.0](LICENSE).
+Copyright © 2026 Cristian Mori. Licensed under the [Apache License 2.0](../LICENSE).
 
 Give the engine an image and a text prompt ("cat", "remote control", any
 description) and it returns labeled bounding boxes. Inference runs fully

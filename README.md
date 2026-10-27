@@ -114,7 +114,7 @@ carries the Windows-specific fixes until they land upstream.
 ## License
 
 Code in this repository: Copyright © 2026 Cristian Mori, licensed under the
-[Apache License 2.0](dotnet/LICENSE).
+[Apache License 2.0](LICENSE).
 
 Third-party components keep their own licenses:
 
